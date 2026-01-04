@@ -1,3 +1,4 @@
+
 public class LinkedList{
   public static class Node{
     int data;
@@ -129,6 +130,33 @@ public class LinkedList{
       }return -1;
     }
     
+    
+    public boolean search(int key){
+      Node temp=head;
+      while(temp!=null){
+        if(temp.data==key){
+          return true;
+        }
+        temp=temp.next;
+      }return false;
+    }
+    
+    
+    public static int countNodes(){
+      Node temp=head;
+      int count=1;
+      while(temp!=null){
+        temp=temp.next;
+        count++;
+      }return count;
+    }
+    
+    
+    
+    
+  
+    
+    
     public static void main(String ar[]){
       LinkedList ll=new LinkedList();
       
@@ -156,5 +184,7 @@ public class LinkedList{
       System.out.println(ll.itrSearch(17));
       System.out.println(ll.itrSearch(19));
       System.out.println(ll.itrSearch(29));
+      System.out.println(ll.search(9));
+      System.out.println(ll.countNodes());
     }
 }
