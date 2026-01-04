@@ -104,6 +104,28 @@ public class LinkedList{
       }
     }
     
+    
+    
+    
+    public void deleteByValue(int key){
+      if(head==null){
+        System.out.println("LinkedList is empty");
+        return;
+      }
+      
+      Node temp=head;
+      while(temp.next!=null && temp.data!=key){
+        temp=temp.next;
+      }
+      
+      if(temp.next!=null){
+        temp.next=temp.next.next;
+      }
+    }
+    
+    
+    
+    
     public void print(){
       if(head==null){
         System.out.println("LL is empty");
@@ -186,5 +208,8 @@ public class LinkedList{
       System.out.println(ll.itrSearch(29));
       System.out.println(ll.search(9));
       System.out.println(ll.countNodes());
+      ll.print();
+      ll.deleteByValue(3);
+      ll.print();
     }
 }
