@@ -1,4 +1,3 @@
-
 public class LinkedList{
   public static class Node{
     int data;
@@ -106,20 +105,23 @@ public class LinkedList{
     
     
     
-    
-    public void deleteByValue(int key){
-      if(head==null){
-        System.out.println("LinkedList is empty");
+     public void deleteByValue(int key){
+      if(size==0){
+        System.out.println("LL is empty");
         return;
       }
-      
+      if(head.data==key){
+        head=head.next;
+        size--;
+        return;
+      }
       Node temp=head;
       while(temp.next!=null && temp.data!=key){
         temp=temp.next;
       }
-      
       if(temp.next!=null){
         temp.next=temp.next.next;
+        size--;
       }
     }
     
@@ -136,8 +138,9 @@ public class LinkedList{
         System.out.print(temp.data+"->");
         temp=temp.next;
       }
-      System.out.println("->"+null);
+      System.out.println(""+null);
     }
+    
     
     
     public int itrSearch(int key){
@@ -166,17 +169,32 @@ public class LinkedList{
     
     public static int countNodes(){
       Node temp=head;
-      int count=1;
+      int count=0;
       while(temp!=null){
-        temp=temp.next;
         count++;
+        temp=temp.next;
       }return count;
     }
     
     
     
     
-  
+    public void reverse(){
+      Node prev=null;
+      Node curr=head;
+      Node next;
+      while(curr!=null){
+         next=curr.next;
+         curr.next=prev;
+         prev=curr;
+         curr=next;
+      }
+      head=prev;
+    }
+    
+    
+    
+    
     
     
     public static void main(String ar[]){
@@ -210,6 +228,8 @@ public class LinkedList{
       System.out.println(ll.countNodes());
       ll.print();
       ll.deleteByValue(3);
+      ll.print();
+      ll.reverseList();
       ll.print();
     }
 }
